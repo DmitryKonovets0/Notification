@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<button class="button">Показать сообщение</button>
+<script >
+    const notifyBtn = document.querySelector(".button");
+    const reqestPermission = function () {
+        if (!("Notification" in window)) {
+            throw new Error ("Браузер не поддерживает уведомления");
+        }
+        Notification.requestPermission().then((permission) => {
+            const notification = new Notification("Code Ready",{
+                body: "Привет! Подпишись на @code_ready",
+                icon: "img/img.jpg",});});};
+    notifyBtn.addEventListener("click", reqestPermission);
+</script>
+</body>
+</html>
